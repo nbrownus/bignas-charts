@@ -48,23 +48,23 @@ function df_stats () {
     );
 
     foreach ($boot['data']['value'] as $data) {
-        $df_final['series'][0]['data'][] = $data;
+        $df_final['series'][0]['data'][] = ($data['used'] / $data['used'] + $data['free']) * 100;
     }
 
     foreach ($root['data']['value'] as $data) {
-        $df_final['series'][0]['data'][] = $data;
+        $df_final['series'][0]['data'][] = ($data['used'] / $data['used'] + $data['free']) * 100;
     }
 
     foreach ($main['data']['value'] as $data) {
-        $df_final['series'][0]['data'][] = $data;
+        $df_final['series'][0]['data'][] = ($data['used'] / $data['used'] + $data['free']) * 100;
     }
 
     foreach ($backup['data']['value'] as $data) {
-        $df_final['series'][0]['data'][] = $data;
+        $df_final['series'][0]['data'][] = ($data['used'] / $data['used'] + $data['free']) * 100;
     }
 
     foreach ($time_machine['data']['value'] as $data) {
-        $df_final['series'][0]['data'][] = $data;
+        $df_final['series'][0]['data'][] = ($data['used'] / $data['used'] + $data['free']) * 100;
     }
 
     return $df_final;
