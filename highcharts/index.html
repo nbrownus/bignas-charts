@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>big-nas graphs</title>
+    <script language="javascript" type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/highcharts.js"></script>
+</head>
+<body>
+    <div>TODO: load, memory-free, df-free%, swap-used</div>
+    <div style="text-align:left">
+        <select id="time-range">
+            <option value="3600000" selected="selected">1 hour</option>
+            <option value="7200000">2 hours</option>
+            <option value="21600000">6 hours</option>
+            <option value="43200000">12 hours</option>
+            <option value="86400000">1 day</option>
+            <option value="172800000">2 days</option>
+            <option value="259200000">3 days</option>
+            <option value="345600000">4 days</option>
+            <option value="604800000">1 week</option>
+            <option value="1209600000">2 weeks</option>
+            <option value="2419200000">1 month</option>
+            <option value="4838400000">2 months</option>
+            <option value="7257600000">3 months</option>
+            <option value="14515200000">6 months</option>
+            <option value="29030400000">1 year</option>
+        </select>
+    </div>
+    <div id="charts"></div>
+</body>
+<script type="text/javascript">
+    var charts = {},
+        timeSpan = $('#time-range').val(),
+        refreshInterval
+
+    $(document).ready(function() {
+        $('#time-range').change(function () {
+            timeSpan = this.value
+            clearInterval(refreshInterval)
+            $('#charts').empty()
+            initGraphs()
+        })
+
+        function drawGraphs (graphs) {
+            $.each(graphs, function (graph, details) {
+                $('#charts').append('<div id="' + graph + '" style="height:300px"></div>')
+                charts[graph] = new Highcharts.Chart($.extend(details, { chart: { renderTo: graph }}))
+            })
+        }
+
+        function updateGraphs (graphs) {
+            $.each(graphs, function (graph, details) {
+                $.each(details.series, function (index, series) {
+                    charts[graph].series[index].setData(series.data)
+                })
+            })
+        }
+
+        function initGraphs () {
+            $.ajax({
+                url: 'rrd.php?start=' + (Date.now() - timeSpan)
+                , method: 'get'
+                , dataType: 'json'
+                , success: drawGraphs
+            })
+        }
+
+        refreshInterval = setInterval(function () {
+            $.ajax({
+                url: 'rrd.php?start=' + (Date.now() - timeSpan)
+                , method: 'get'
+                , dataType: 'json'
+                , success: updateGraphs
+            })
+        }, 10000)
+
+        initGraphs()
+    })
+</script>
+</html>
