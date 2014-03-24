@@ -13,7 +13,7 @@ function hdd_temps() {
             'name' => 'hdd ' . substr(basename($rrd, '.rrd'), 12),
             'data' => array(),
             'pointInterval' => ($info['step'] * 1000),
-            'pointStart' => ($info['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $info['start'] * 1000,
         );
 
         foreach ($info['data']['value'] as $temp) {

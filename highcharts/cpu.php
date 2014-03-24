@@ -16,13 +16,13 @@ function cpu_idle () {
             'name' => 'cpu-0',
             'data' => array(),
             'pointInterval' => $cpu0['step'] * 1000,
-            'pointStart' => ($cpu0['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $cpu0['start'] * 1000,
         ),
         array(
             'name' => 'cpu-1',
             'data' => array(),
             'pointInterval' => $cpu1['step'] * 1000,
-            'pointStart' => ($cpu1['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $cpu1['start'] * 1000,
         )
     );
 

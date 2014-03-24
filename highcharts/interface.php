@@ -13,14 +13,14 @@ function eth0() {
         'name' => 'received',
         'data' => array(),
         'pointInterval' => ($info['step'] * 1000),
-        'pointStart' => ($info['start'] - (60 * 60 * 8)) * 1000,
+        'pointStart' => $info['start'] * 1000,
     );
 
     $graph['series'][1] = array(
         'name' => 'transmitted',
         'data' => array(),
         'pointInterval' => ($info['step'] * 1000),
-        'pointStart' => ($info['start'] - (60 * 60 * 8)) * 1000,
+        'pointStart' => $info['start'] * 1000,
     );
 
     foreach ($info['data']['rx'] as $speed) {

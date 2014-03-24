@@ -18,7 +18,7 @@ function fan_speeds () {
             'name' => $rrd['name'],
             'data' => array(),
             'pointInterval' => ($info['step'] * 1000),
-            'pointStart' => ($info['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $info['start'] * 1000,
         );
 
         foreach ($info['data']['value'] as $speed) {

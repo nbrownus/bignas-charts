@@ -19,31 +19,31 @@ function df_stats () {
             'name' => 'boot',
             'data' => array(),
             'pointInterval' => $boot['step'] * 1000,
-            'pointStart' => ($boot['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $boot['start'] * 1000,
         ),
         array(
             'name' => 'root',
             'data' => array(),
             'pointInterval' => $root['step'] * 1000,
-            'pointStart' => ($root['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $root['start'] * 1000,
         ),
         array(
             'name' => 'main',
             'data' => array(),
             'pointInterval' => $main['step'] * 1000,
-            'pointStart' => ($main['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $main['start'] * 1000,
         ),
         array(
             'name' => 'backup',
             'data' => array(),
             'pointInterval' => $backup['step'] * 1000,
-            'pointStart' => ($backup['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $backup['start'] * 1000,
         ),
         array(
             'name' => 'time_machine',
             'data' => array(),
             'pointInterval' => $time_machine['step'] * 1000,
-            'pointStart' => ($time_machine['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $time_machine['start'] * 1000,
         )
     );
 

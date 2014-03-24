@@ -16,25 +16,25 @@ function memory_all () {
             'name' => 'buffered',
             'data' => array(),
             'pointInterval' => $buffered['step'] * 1000,
-            'pointStart' => ($buffered['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $buffered['start'] * 1000,
         ),
         array(
             'name' => 'cached',
             'data' => array(),
             'pointInterval' => $cached['step'] * 1000,
-            'pointStart' => ($cached['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $cached['start'] * 1000,
         ),
         array(
             'name' => 'free',
             'data' => array(),
             'pointInterval' => $free['step'] * 1000,
-            'pointStart' => ($free['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $free['start'] * 1000,
         ),
         array(
             'name' => 'used',
             'data' => array(),
             'pointInterval' => $used['step'] * 1000,
-            'pointStart' => ($used['start'] - (60 * 60 * 8)) * 1000,
+            'pointStart' => $used['start'] * 1000,
         )
     );
 
