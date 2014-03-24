@@ -4,9 +4,7 @@ function memory_all () {
 
     $memory_final = getDefaultGraph();
     $memory_final['title']['text'] = 'Memory';
-    $memory_final['yAxis']['title']['text'] = '% idle';
-    $memory_final['yAxis']['max'] = 100;
-    $memory_final['yAxis']['min'] = 0;
+    $memory_final['yAxis']['title']['text'] = 'bytes';
 
     $buffered = getInfo($startTime, time(), $rrdLocation . '/memory/memory-buffered.rrd');
     $cached = getInfo($startTime, time(), $rrdLocation . '/memory/memory-cached.rrd');
@@ -45,15 +43,15 @@ function memory_all () {
     }
 
     foreach ($cached['data']['value'] as $data) {
-        $memory_final['series'][0]['data'][] = $data;
+        $memory_final['series'][1]['data'][] = $data;
     }
 
     foreach ($free['data']['value'] as $data) {
-        $memory_final['series'][0]['data'][] = $data;
+        $memory_final['series'][2]['data'][] = $data;
     }
 
     foreach ($used['data']['value'] as $data) {
-        $memory_final['series'][0]['data'][] = $data;
+        $memory_final['series'][3]['data'][] = $data;
     }
 
     return $memory_final;
