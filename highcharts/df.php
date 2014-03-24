@@ -47,24 +47,24 @@ function df_stats () {
         )
     );
 
-    foreach ($boot['data']['value'] as $data) {
-        $df_final['series'][0]['data'][] = ($data['used'] / $data['used'] + $data['free']) * 100;
+    for ($i = 0; $i < count($boot['data']['used']); $i++) {
+        $df_final['series'][0]['data'][] = ($boot['data']['used'][$i] / $boot['data']['used'][$i] + $boot['data']['free'][$i]) * 100;
     }
 
-    foreach ($root['data']['value'] as $data) {
-        $df_final['series'][0]['data'][] = ($data['used'] / $data['used'] + $data['free']) * 100;
+    for ($i = 0; $i < count($root['data']['used']); $i++) {
+        $df_final['series'][1]['data'][] = ($root['data']['used'][$i] / $root['data']['used'][$i] + $root['data']['free'][$i]) * 100;
     }
 
-    foreach ($main['data']['value'] as $data) {
-        $df_final['series'][0]['data'][] = ($data['used'] / $data['used'] + $data['free']) * 100;
+    for ($i = 0; $i < count($main['data']['used']); $i++) {
+        $df_final['series'][2]['data'][] = ($main['data']['used'][$i] / $main['data']['used'][$i] + $main['data']['free'][$i]) * 100;
     }
 
-    foreach ($backup['data']['value'] as $data) {
-        $df_final['series'][0]['data'][] = ($data['used'] / $data['used'] + $data['free']) * 100;
+    for ($i = 0; $i < count($backup['data']['used']); $i++) {
+        $df_final['series'][3]['data'][] = ($backup['data']['used'][$i] / $backup['data']['used'][$i] + $backup['data']['free'][$i]) * 100;
     }
 
-    foreach ($time_machine['data']['value'] as $data) {
-        $df_final['series'][0]['data'][] = ($data['used'] / $data['used'] + $data['free']) * 100;
+    for ($i = 0; $i < count($time_machine['data']['used']); $i++) {
+        $df_final['series'][4]['data'][] = ($time_machine['data']['used'][$i] / $time_machine['data']['used'][$i] + $time_machine['data']['free'][$i]) * 100;
     }
 
     return $df_final;
