@@ -60,6 +60,7 @@ $graphs = array(
     'fan-speeds' => include('fan_speed.php'),
     'mb-temps' => include('mb_temps.php'),
     'interface' => include('interface.php'),
+    'memory' => include('memory.php')
 );
 
 echo json_encode($graphs);
